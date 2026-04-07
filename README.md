@@ -25,3 +25,12 @@
 # target_metadata = None
 # e altere para:
 # target_metadata = Base.metadata
+
+# Criando as migrações - Qualquer alteração no banco
+# ----------------------------------
+
+# no terminal rodar o comando:
+# python -m alembic revision --autogenerate -m "Criando as tabelas"
+# Depois rodar o comando:
+# python -m alembic upgrade head       
+# Para executar as alterações no banco.

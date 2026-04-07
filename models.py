@@ -16,6 +16,7 @@ class Curso(Base):
     id_curso = Column(Integer, primary_key=True, autoincrement=True)
     nome_curso = Column(String(100), nullable=False)
     carga_hr = Column(Integer, nullable=False)
+    descricao = Column(String(150))
     
     alunos = relationship("Aluno", back_populates= "cursos")
 
