@@ -17,5 +17,26 @@ def cadastrar_curso():
             session.rollback()
             print(f"Ocorreu um erro {erro}")
 
-cadastrar_curso()
+#cadastrar_curso()
 #Cadastrar um aluno no curso.
+
+def cadastrar_aluno():
+    nome_aluno = input("Digite o nome do aluno: ").strip().capitalize()
+    email_aluno = input("Digite o email do aluno: ").strip().capitalize()
+    buscar_curso = input(f"Digite o nome do curso do aluno {nome_aluno}: ").strip().capitalize()
+    with Session() as session:
+        try:
+            curso = session.query(Curso).filter_by(nome_curso=buscar_curso).first()
+            if curso == None:
+                print("Não foi possível encontrar um curso com este nome!")
+                return
+            else:
+                aluno = Aluno(nome_aluno =nome_aluno, email= email_aluno)
+            session.add(aluno)
+            session.commit()
+            print("Aluno criado com sucesso!")
+        except Exception as erro:
+            session.rollback()
+            print(f"Ocorreu um erro {erro}")
+
+cadastrar_aluno()
